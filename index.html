@@ -1,1 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="description" content="BINODINI Café & Restaurant — delicious food, warm hospitality and memorable dining.">
+  <meta name="keywords" content="BINODINI, cafe, restaurant, Kolkata, food, dining">
+
+  <title>BINODINI | Café & Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fffaf2;
+      color: #2b2119;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(20, 16, 12, 0.94);
+      border-bottom: 1px solid rgba(200,155,85,0.3);
+    }
+
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+
+    .logo span {
+      color: #c89b55;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .nav-links a:hover {
+      color: #c89b55;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 75px;
+
+      display: flex;
+      align-items: center;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          rgba(20,16,12,0.78),
+          rgba(20,16,12,0.70)
+        ),
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      color: #c89b55;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 9vw, 105px);
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #eeeeee;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border: 1px solid #c89b55;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #c89b55;
+      color: #21180f;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(38px, 5vw, 58px);
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      font-family: Arial, sans-serif;
+      color: #75685c;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #f7efe3;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-image {
+      height: 500px;
+
+      background:
+        url("https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-content h3 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-family: Arial, sans-serif;
+      color: #75685c;
+      margin-bottom: 18px;
+    }
+
+    .signature {
+      color: #c89b55;
+      font-size: 22px;
+      font-style: italic;
+    }
+
+    /* MENU */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .menu-item {
+      background: white;
+      border: 1px solid #e4d7c5;
+      padding: 25px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      transition: 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .menu-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .menu-item p {
+      font-family: Arial, sans-serif;
+      color: #75685c;
+      font-size: 14px;
+    }
+
+    .price {
+      color: #c89b55;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* OFFER */
+
+    .offer {
+      background: #17130f;
+      color: white;
+      text-align: center;
+    }
+
+    .offer-box {
+      border: 1px solid rgba(200,155,85,0.4);
+      padding: 60px 25px;
+    }
+
+    .offer-box h2 {
+      font-size: clamp(38px, 5vw, 60px);
+      margin: 12px 0 20px;
+    }
+
+    .offer-box p {
+      font-family: Arial, sans-serif;
+      color: #ddd;
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery div {
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gallery-1 {
+      background-image: url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .gallery-2 {
+      background-image: url("https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .gallery-3 {
+      background-image: url("https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .gallery-4 {
+      background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80");
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #f7efe3;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 35px;
+      border: 1px solid #e4d7c5;
+    }
+
+    .contact-card h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .contact-card p {
+      font-family: Arial, sans-serif;
+      color: #75685c;
+      margin: 10px 0;
+    }
+
+    .map {
+      min-height: 350px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      color: white;
+
+      background:
+        linear-gradient(
+          rgba(20,16,12,0.55),
+          rgba(20,16,12,0.55)
+        ),
+        url("https://images.unsplash.com/photo-1524666041070-9c8769c2b6c0?auto=format&fit=crop&w=1200&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .map-box {
+      border: 1px solid #c89b55;
+      padding: 20px;
+      background: rgba(20,16,12,0.7);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #100d0a;
+      color: white;
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-content p {
+      font-family: Arial, sans-serif;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .social {
+      display: flex;
+      gap: 20px;
+      color: #c89b55;
+      font-family: Arial, sans-serif;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+
+      width: 58px;
+      height: 58px;
+
+      border-radius: 50%;
+
+      background: #25D366;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 25px;
+      font-weight: bold;
+
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
+      z-index: 2000;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-image {
+        height: 350px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:500px) {
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery div {
+        height: 250px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <header>
+    <div class="container">
+      <nav>
+
+        <a href="#home" class="logo">
+          BINO<span>DINI</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#menu">Menu</a>
+          <a href="#offers">Offers</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Café & Restaurant
+        </div>
+
+        <h1>
+          Good Food.<br>
+          Good Mood.
+        </h1>
+
+        <p>
+          Welcome to BINODINI — a warm dining destination
+          where delicious food, thoughtful hospitality and
+          beautiful moments come together.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#menu" class="btn btn-primary">
+            Explore Menu
+          </a>
+
+          <a
+            href="https://wa.me/919999999999?text=Hello%20BINODINI%2C%20I%20would%20like%20to%20make%20a%20reservation."
+            target="_blank"
+            class="btn"
+          >
+            Reserve a Table
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div class="about-image"></div>
+
+        <div class="about-content">
+
+          <div class="eyebrow">
+            Our Story
+          </div>
+
+          <h3>
+            Made with heart,
+            served with warmth.
+          </h3>
+
+          <p>
+            BINODINI is built around a simple idea:
+            great food tastes even better when shared.
+          </p>
+
+          <p>
+            Our kitchen brings together comforting
+            favourites, carefully selected ingredients
+            and a welcoming atmosphere.
+          </p>
+
+          <p>
+            Whether it is a quick coffee, a family meal,
+            a date or a celebration, we want every visit
+            to feel special.
+          </p>
+
+          <div class="signature">
+            — Team BINODINI
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+
+  <section id="menu">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Taste BINODINI
+        </div>
+
+        <h2>
+          Our Signature Menu
+        </h2>
+
+        <p>
+          A sample menu is shown below.
+          We can replace these items with BINODINI's
+          actual menu later.
+        </p>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div>
+            <h3>Classic Chicken Biryani</h3>
+            <p>
+              Fragrant rice, tender chicken
+              and aromatic spices.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹249
+          </div>
+        </div>
+
+
+        <div class="menu-item">
+          <div>
+            <h3>Paneer Butter Masala</h3>
+            <p>
+              Soft paneer in a rich,
+              creamy tomato gravy.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹219
+          </div>
+        </div>
+
+
+        <div class="menu-item">
+          <div>
+            <h3>Chicken Tikka</h3>
+            <p>
+              Char-grilled chicken
+              marinated in Indian spices.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹229
+          </div>
+        </div>
+
+
+        <div class="menu-item">
+          <div>
+            <h3>Veg Hakka Noodles</h3>
+            <p>
+              Wok-tossed noodles with
+              fresh vegetables.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹169
+          </div>
+        </div>
+
+
+        <div class="menu-item">
+          <div>
+            <h3>Masala Cold Coffee</h3>
+            <p>
+              Creamy chilled coffee
+              with our BINODINI touch.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹129
+          </div>
+        </div>
+
+
+        <div class="menu-item">
+          <div>
+            <h3>Gulab Jamun</h3>
+            <p>
+              Warm soft dumplings
+              served with syrup.
+            </p>
+          </div>
+
+          <div class="price">
+            ₹89
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OFFERS -->
+
+  <section class="offer" id="offers">
+
+    <div class="container">
+
+      <div class="offer-box">
+
+        <div class="eyebrow">
+          Limited Time
+        </div>
+
+        <h2>
+          Special Moments,
+          Special Offers
+        </h2>
+
+        <p>
+          Enjoy exclusive dining offers and
+          celebration packages at BINODINI.
+          Contact us to ask about today's offers.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">
+          Ask About Offers
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          A Visual Taste
+        </div>
+
+        <h2>
+          Gallery
+        </h2>
+
+        <p>
+          These are sample images.
+          Later we can replace them with
+          BINODINI's real food and restaurant photos.
+        </p>
+
+      </div>
+
+
+      <div class="gallery">
+
+        <div class="gallery-1"></div>
+        <div class="gallery-2"></div>
+        <div class="gallery-3"></div>
+        <div class="gallery-4"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Come Visit
+        </div>
+
+        <h2>
+          Let's Make It Delicious
+        </h2>
+
+        <p>
+          We will replace these sample details
+          with BINODINI's real information.
+        </p>
+
+      </div>
+
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+
+          <h3>
+            Contact BINODINI
+          </h3>
+
+          <p>
+            <strong>📍 Address:</strong><br>
+            Your Restaurant Address,
+            Kolkata, West Bengal
+          </p>
+
+          <p>
+            <strong>📞 Phone:</strong><br>
+            +91 99999 99999
+          </p>
+
+          <p>
+            <strong>✉️ Email:</strong><br>
+            hello@binodini.example
+          </p>
+
+          <p>
+            <strong>🕒 Opening Hours:</strong><br>
+            11:00 AM – 11:00 PM
+          </p>
+
+          <br>
+
+          <a
+            href="https://wa.me/919999999999"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            WhatsApp Us
+          </a>
+
+        </div>
+
+
+        <div class="map">
+
+          <div class="map-box">
+
+            📍 Google Maps
+
+            <br><br>
+
+            <small>
+              We will add BINODINI's
+              real location here.
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <p>
+          © 2026 BINODINI Café & Restaurant.
+          All rights reserved.
+        </p>
+
+        <div class="social">
+
+          <a href="#">
+            Instagram
+          </a>
+
+          <a href="#">
+            Facebook
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- WHATSAPP BUTTON -->
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/919999999999?text=Hello%20BINODINI"
+    target="_blank"
+    aria-label="Chat on WhatsApp"
+  >
+    ☏
+  </a>
+
+</body>
+</html>
